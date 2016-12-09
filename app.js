@@ -9,6 +9,9 @@ var precipPlayer1;
 var clouds2;
 var temp2;
 var precipPlayer2;
+var gameresult; 
+var player1_score = 0;
+var player2_score = 0;
 
 
 //callback
@@ -62,7 +65,7 @@ $('#js-search2').submit(function(event){
 
 $('#js-compare').submit(function(event) {
       event.preventDefault();
-      gameresult = compare(compareClouds,compareTemp,comparePrecip);
+      gameresult = compare();
       console.log(gameresult);
       displayResult();
 
@@ -139,15 +142,13 @@ function callbackStore2(response) {
 
 //Compare Temps and Update Scores
 //How are we passing in globals
-var player1_score = 0
-var player2_score = 0
 
 function compareTemp() {
   if (temp1 > temp2) {
-  player1_score +=1
+  player1_score += 1
 }
 else if (temp2 > temp1) {
-  player2_score +=1
+  player2_score += 1
   }
 }
 //Compare Clouds and Update Scores
@@ -156,21 +157,23 @@ function compareClouds() {
 player2_score += 1
 }
 else if (clouds2 > clouds1) {
-  player1_score +=1
+  player1_score += 1
   }
 }
 
 //Compare Precip Update Scores
 function comparePrecip () {
-  if (precip1 === true || precip2 === false) {
+  if (precip1 == true || precip2 == false) {
 player2_score += 1
 }
-else if (precip2 === true || precip1 === false) {
-  player1_score +=1
+else if (precip2 == true || precip1 == false) {
+  player1_score += 1
   }
 }
-function compare (compareClouds,compareTemp,comparePrecip) {
-
+function compare () {
+  compareTemp();
+  comparePrecip();
+  compareClouds();
   if (player1_score > player2_score) {
   return "Player 1 has better weather";
   }
@@ -182,4 +185,4 @@ function compare (compareClouds,compareTemp,comparePrecip) {
   }
 };
 
-console.log(player1_score);
+console.log(player2_score);
