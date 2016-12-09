@@ -64,7 +64,7 @@ $('#js-compare').submit(function(event) {
       event.preventDefault();
       gameresult = compare(compareClouds,compareTemp,comparePrecip);
       console.log(gameresult);
-      // displayResult(gameresult);
+      displayResult();
 
  })
 
@@ -102,7 +102,7 @@ function displayWeather2(){
 }
 
 function displayResult(){
-  $('.js-compare p').html(gameresult);
+  $('#js-compare p').html(gameresult);
 }
 
 
@@ -182,4 +182,4 @@ function compare (compareClouds,compareTemp,comparePrecip) {
   }
 };
 
-console.log();
+console.log(player1_score);
