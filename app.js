@@ -31,9 +31,7 @@ function queryWeather2(searchCity, callbackFn) {
         units: "imperial",
         appid: API_KEY,
         }
-    $.getJSON(SEARCH_URL, params, function(response){
-     // console.log(response);
-    });
+    $.getJSON(SEARCH_URL, params, callbackStore2);   
 }
 
 //event listening logic
@@ -62,10 +60,11 @@ $('#js-search2').submit(function(event){
 
   })
 
-$('#js-compare').click(function(event) {
+$('#js-compare').submit(function(event) {
       event.preventDefault();
       gameresult = compare(compareClouds,compareTemp,comparePrecip);
-      displayResult(gameresult);
+      console.log(gameresult);
+      // displayResult(gameresult);
 
  })
 
@@ -91,19 +90,19 @@ $('#js-compare').click(function(event) {
 //must render weather data for each player AND render winner based upon comparrison of scores
 
 function displayWeather1() {
-  $('.js-clouddata1').html(clouds1);
+  $('.js-clouddata1').html(clouds1 + '%');
   $('.js-tempdata1').html(temp1);
   $('.js-precipdata1').html(precipPlayer1);
 }
 
 function displayWeather2(){
- $('.js-clouddata2').html(clouds2);
+ $('.js-clouddata2').html(clouds2 + '%');
   $('.js-tempdata2').html(temp2);
   $('.js-precipdata2').html(precipPlayer2);
 }
 
 function displayResult(){
-  $('.js-compare').html(gameresult);
+  $('.js-compare p').html(gameresult);
 }
 
 
