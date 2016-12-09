@@ -3,6 +3,17 @@ var API_KEY = '9be13ca98f24eafcd8d9c1c5b856347b';
 // APPID is your unique API key
 //example API call: http://api.openweathermap.org/data/2.5/weather?q=Atlanta,GA&units=imperial&appid=9be13ca98f24eafcd8d9c1c5b856347b
 
+var clouds1;
+var temp1;
+var precipPlayer1;
+var clouds2;
+var temp2;
+var precipPlayer2;
+
+
+//callback
+
+
 
 // ajax logic
 function queryWeather1(searchCity, callbackFn) {
@@ -21,23 +32,36 @@ function queryWeather2(searchCity, callbackFn) {
         appid: API_KEY,
         }
     $.getJSON(SEARCH_URL, params, function(response){
-      console.log(response);
+     // console.log(response);
     });
 }
 
 //event listening logic
 
-$('#js-search').submit(function(event){
+$('#js-search1').submit(function(event){
       event.preventDefault();
       var searchCity = $(event.currentTarget).find('input').val();
-      console.log(searchCity);
       queryWeather1(searchCity);
+      callbackStore1();
       displayWeather1();
       // displayWeather2(clouds2, temp2, precip2);
 // This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
 //linked to the same class
 
   })
+
+$('#js-search2').submit(function(event){
+      event.preventDefault();
+      var searchCity = $(event.currentTarget).find('input').val();
+      queryWeather2(searchCity);
+      callbackStore2();
+      displayWeather2();
+      // displayWeather2(clouds2, temp2, precip2);
+// This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
+//linked to the same class
+
+  })
+
 $('#js-compare').click(function(event) {
       event.preventDefault();
       gameresult = compare(compareClouds,compareTemp,comparePrecip);
@@ -67,48 +91,50 @@ $('#js-compare').click(function(event) {
 //must render weather data for each player AND render winner based upon comparrison of scores
 
 function displayWeather1() {
-  console.log(clouds1);
-  $('#js-clouddata1').html(clouds1);
-  $('#js-tempdata1').html(temp1);
-  $('#js-precipdata1').html(precip1);
+  $('.js-clouddata1').html(clouds1);
+  $('.js-tempdata1').html(temp1);
+  $('.js-precipdata1').html(precipPlayer1);
 }
 
 function displayWeather2(){
-  $('#js-clouddata2').html(clouds2);
-  $('#js-tempdata2').html(temp2);
-  $('#js-precipdata2').html(precip2);
+ $('.js-clouddata2').html(clouds2);
+  $('.js-tempdata2').html(temp2);
+  $('.js-precipdata2').html(precipPlayer2);
 }
 
 function displayResult(){
-  $('#js-compare').html(gameresult);
+  $('.js-compare').html(gameresult);
 }
 
 
-//callback
-
 function callbackStore1(response) {
-   temp1 = response.main.temp
-   clouds1 = response.clouds.all
-   console.log(clouds1);
-  if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
-    precip1 = true;
+    if(response) {
+      temp1 = response.main.temp;
+      clouds1 = response.clouds.all
+      precipPlayer1 = response.weather["0"].main
+   if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
+       precip1 = true;
 
   }  else {
     precip1 = false;
   }
+    }
 }
-
 
 function callbackStore2(response) {
-  temp2 = response.main.temp
-  clouds2 = response.clouds.all
-  if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
-   precip2 = true
+    if(response) {
+      temp2 = response.main.temp;
+      clouds2 = response.clouds.all
+      precipPlayer2 = response.weather["0"].main
+   if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
+       precip2 = true;
+
+  }  else {
+    precip2 = false;
   }
-  else {
-    precip2 = false
-  }
+    }
 }
+
 
 //Game Scores
 
