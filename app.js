@@ -7,18 +7,18 @@ var clouds2
 var precip1
 var precip2
 
-var SEARCH_URL = 'api.openweathermap.org/data/2.5/weather?';
+var SEARCH_URL = 'http://api.openweathermap.org/data/2.5/weather?';
 var API_KEY = '9be13ca98f24eafcd8d9c1c5b856347b';
 // APPID is your unique API key
 //example API call: http://api.openweathermap.org/data/2.5/weather?q=Atlanta,GA&units=imperial&appid=9be13ca98f24eafcd8d9c1c5b856347b
 
 
 // ajax logic
-function queryWeather(city, callbackFn) {
+function queryWeather(searchCity, callbackFn) {
     var params = {
         q: searchCity,
-        units: "imperial",
-        key: API_KEY,
+        units: 'imperial',
+        appid: API_KEY,
         }
     $.getJSON(SEARCH_URL, params, function(response){
       console.log(response);
@@ -26,6 +26,15 @@ function queryWeather(city, callbackFn) {
 }
 
 //event listening logic
+
+ $('#js-search').submit(function(event){
+      event.preventDefault();
+      var searchCity = $(event.currentTarget).find('input').val();
+      console.log(searchCity);
+      console.log();
+      queryWeather(searchCity);
+  });
+
 
 function submission(){
   $('#js-search').submit(function(event){
@@ -39,10 +48,10 @@ function submission(){
 
 //render function
 
-function displayWeather() {
-  var city1temp = main.temp;
-  // console.log(city1temp);
-}
+// function displayWeather() {
+//   var city1temp = main.temp;
+//   // console.log(city1temp);
+// }
 
 
 // function compare_temp() {
