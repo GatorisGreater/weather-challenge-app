@@ -33,14 +33,14 @@ $('#js-search').submit(function(event){
       console.log(searchCity);
       queryWeather1(searchCity);
       displayWeather1();
-      displayWeather2();
+      // displayWeather2(clouds2, temp2, precip2);
 // This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
 //linked to the same class
 
   })
 $('#js-compare').click(function(event) {
       event.preventDefault();
-    var gameresult = compare(compareClouds,compareTemp,comparePrecip);
+      gameresult = compare(compareClouds,compareTemp,comparePrecip);
       displayResult(gameresult);
 
  })
@@ -67,12 +67,20 @@ $('#js-compare').click(function(event) {
 //must render weather data for each player AND render winner based upon comparrison of scores
 
 function displayWeather1() {
-  }
+  console.log(clouds1);
+  $('#js-clouddata1').html(clouds1);
+  $('#js-tempdata1').html(temp1);
+  $('#js-precipdata1').html(precip1);
+}
 
 function displayWeather2(){
+  $('#js-clouddata2').html(clouds2);
+  $('#js-tempdata2').html(temp2);
+  $('#js-precipdata2').html(precip2);
 }
 
 function displayResult(){
+  $('#js-compare').html(gameresult);
 }
 
 
@@ -81,6 +89,7 @@ function displayResult(){
 function callbackStore1(response) {
    temp1 = response.main.temp
    clouds1 = response.clouds.all
+   console.log(clouds1);
   if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
     precip1 = true;
 
