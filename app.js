@@ -31,7 +31,7 @@ $('#js-search').submit(function(event){
       event.preventDefault();
       var searchCity = $(event.currentTarget).find('input').val();
       console.log(searchCity);
-      queryWeather1(searchCity, callbackStore1);
+      queryWeather1(searchCity);
   })
 
 // function submission1(){
@@ -65,12 +65,15 @@ function displayWeather2(){
 //callback
 
 function callbackStore1(response) {
+   console.log(response.weather["0"].main)
    temp1 = response.main.temp
    clouds1 = response.clouds.all
-  if (response.weather.main.indexOf('snow') != -1 || response.weather.main.indexOf('rain') != -1) {
-   precip1 = true }
-  else {
-    precip1 = false
+  if (response.weather["0"].main.indexOf('Clouds') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
+    precip1 = true;
+    console.log("true"); 
+  }  else {
+    precip1 = false;
+    console.log("false");
   }
 }
 
