@@ -1,1 +1,7 @@
-img {}
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-bottom: 20px;
+}
