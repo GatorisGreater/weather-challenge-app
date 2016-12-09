@@ -1,26 +1,24 @@
-var SEARCH_URL = 'api.openweathermap.org/data/2.5/weather?';
+var SEARCH_URL = 'http://api.openweathermap.org/data/2.5/weather?';
 var API_KEY = '9be13ca98f24eafcd8d9c1c5b856347b';
 // APPID is your unique API key
 //example API call: http://api.openweathermap.org/data/2.5/weather?q=Atlanta,GA&units=imperial&appid=9be13ca98f24eafcd8d9c1c5b856347b
 
 
 // ajax logic
-function queryWeather1(city, callbackFn) {
+function queryWeather1(searchCity, callbackFn) {
     var params = {
         q: searchCity,
         units: "imperial",
-        key: API_KEY,
+        appid: API_KEY,
         }
-    $.getJSON(SEARCH_URL, params, function(response){
-      console.log(response);
-    });
+    $.getJSON(SEARCH_URL, params, callbackStore1);
 }
 
-function queryWeather2(city, callbackFn) {
+function queryWeather2(searchCity, callbackFn) {
     var params = {
         q: searchCity,
         units: "imperial",
-        key: API_KEY,
+        appid: API_KEY,
         }
     $.getJSON(SEARCH_URL, params, function(response){
       console.log(response);
@@ -29,23 +27,30 @@ function queryWeather2(city, callbackFn) {
 
 //event listening logic
 
-function submission1(){
-  $('#js-search').submit(function(event){
+$('#js-search').submit(function(event){
       event.preventDefault();
       var searchCity = $(event.currentTarget).find('input').val();
-
-    queryWeather(searchCity, callbackStore1);
+      console.log(searchCity);
+      queryWeather1(searchCity, callbackStore1);
   })
-}
 
-function submission2(){
-  $('#js-search').submit(function(event){
-      event.preventDefault();
-      var searchCity = $(event.currentTarget).find('input').val();
+// function submission1(){
+//   $('#js-search').submit(function(event){
+//       event.preventDefault();
+//       var searchCity = $(event.currentTarget).find('input').val();
 
-    queryWeather(searchCity, callbackStore2);
-  })
-}
+//     queryWeather(searchCity, callbackStore1);
+//   })
+// }
+
+// function submission2(){
+//   $('#js-search').submit(function(event){
+//       event.preventDefault();
+//       var searchCity = $(event.currentTarget).find('input').val();
+
+//     queryWeather(searchCity, callbackStore2);
+//   })
+// }
 
 //render functions
 //must render weather data for each player AND render winner based upon comparrison of scores
@@ -59,25 +64,25 @@ function displayWeather2(){
 
 //callback
 
-function callbackStore1(data) {
-   temp1 = data.main.temp
-   clouds1 = data.clouds.all
-  if (data.weather.main.indexOf('snow') != -1 || data.weather.main.indexOf('rain') != -1) {
-   precip1 = true
+function callbackStore1(response) {
+   temp1 = response.main.temp
+   clouds1 = response.clouds.all
+  if (response.weather.main.indexOf('snow') != -1 || response.weather.main.indexOf('rain') != -1) {
+   precip1 = true }
   else {
     precip1 = false
-    }
   }
 }
 
-function callbackStore2(data) {
-  temp2 = data.main.temp
-  clouds2 = data.clouds.all
-  if (data.weather.main.indexOf('snow') != -1 || data.weather.main.indexOf('rain') != -1) {
+
+function callbackStore2(response) {
+  temp2 = response.main.temp
+  clouds2 = response.clouds.all
+  if (response.weather.main.indexOf('snow') != -1 || response.weather.main.indexOf('rain') != -1) {
    precip2 = true
+  }
   else {
     precip2 = false
-    }
   }
 }
 
