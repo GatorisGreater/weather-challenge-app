@@ -13,7 +13,7 @@
   <h1>Welcome to Better Weather</h1>
   <h2>Challenge an opponent head to head to see who has better weather</h2>
 </header>
-//move form above input
+
 <form id='js-search'>
 <div class='row'>
   <div class='col-6'>
@@ -26,7 +26,7 @@
 <p>  Precipitation Data Goes Here</p>
 <p>  Player 1: Enter your city name</p>
 <input type="text" placeholder="Newark,NJ"/>
-<button type="Submit">Submit</button>
+<button type="Submit">Get Weather</button>
     </div>
   </div>
 </div>
@@ -42,10 +42,14 @@
     <p class = 'js-precipdata2'>      Precipitation Data Goes Here    </p>
 <p>  Player 2: Enter your city name</p>
 <input type="text" placeholder="Atlanta,GA"/>
-<button>Submit</button>
+<button>Get Weather</button>
   </div>
   </div>
 </div>
+</form>
+<form id="js-compare">
+  <button id="button-compare">Who Wins?</button>
+  <p></p>
 </form>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>

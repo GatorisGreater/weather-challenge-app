@@ -32,9 +32,20 @@ $('#js-search').submit(function(event){
       var searchCity = $(event.currentTarget).find('input').val();
       console.log(searchCity);
       queryWeather1(searchCity);
-  })
+      displayWeather1();
+      displayWeather2();
+// This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
+//linked to the same class
 
-// function submission1(){
+  })
+$('#js-compare').click(function(event) {
+      event.preventDefault();
+    var gameresult = compare(compareClouds,compareTemp,comparePrecip);
+      displayResult(gameresult);
+
+ })
+
+// function submission1()
 //   $('#js-search').submit(function(event){
 //       event.preventDefault();
 //       var searchCity = $(event.currentTarget).find('input').val();
@@ -59,21 +70,22 @@ function displayWeather1() {
   }
 
 function displayWeather2(){
-
 }
+
+function displayResult(){
+}
+
 
 //callback
 
 function callbackStore1(response) {
-   console.log(response.weather["0"].main)
    temp1 = response.main.temp
    clouds1 = response.clouds.all
-  if (response.weather["0"].main.indexOf('Clouds') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
+  if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
     precip1 = true;
-    console.log("true"); 
+
   }  else {
     precip1 = false;
-    console.log("false");
   }
 }
 
@@ -81,7 +93,7 @@ function callbackStore1(response) {
 function callbackStore2(response) {
   temp2 = response.main.temp
   clouds2 = response.clouds.all
-  if (response.weather.main.indexOf('snow') != -1 || response.weather.main.indexOf('rain') != -1) {
+  if (response.weather["0"].main.indexOf('snow') != -1 || response.weather["0"].main.indexOf('rain') != -1) {
    precip2 = true
   }
   else {
@@ -93,11 +105,14 @@ function callbackStore2(response) {
 
 //Compare Temps and Update Scores
 //How are we passing in globals
+var player1_score = 0
+var player2_score = 0
+
 function compareTemp() {
   if (temp1 > temp2) {
   player1_score +=1
 }
-else if (temperature2 > tempurature1) {
+else if (temp2 > temp1) {
   player2_score +=1
   }
 }
@@ -120,3 +135,17 @@ else if (precip2 === true || precip1 === false) {
   player1_score +=1
   }
 }
+function compare (compareClouds,compareTemp,comparePrecip) {
+
+  if (player1_score > player2_score) {
+  return "Player 1 has better weather";
+  }
+  else if (player1_score === player2_score){
+    return "Same Weather";
+  }
+  else {
+    return "Player 2 has better weather";
+  }
+};
+
+console.log();
