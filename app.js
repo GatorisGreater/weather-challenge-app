@@ -25,7 +25,7 @@ function queryWeather1(searchCity, callbackFn) {
         units: "imperial",
         appid: API_KEY,
         }
-    $.getJSON(SEARCH_URL, params, callbackStore1);
+    $.getJSON(SEARCH_URL, params, callbackFn);
 }
 
 function queryWeather2(searchCity, callbackFn) {
@@ -34,7 +34,7 @@ function queryWeather2(searchCity, callbackFn) {
         units: "imperial",
         appid: API_KEY,
         }
-    $.getJSON(SEARCH_URL, params, callbackStore2);   
+    $.getJSON(SEARCH_URL, params, callbackFn);   
 }
 
 //event listening logic
@@ -42,9 +42,10 @@ function queryWeather2(searchCity, callbackFn) {
 $('#js-search1').submit(function(event){
       event.preventDefault();
       var searchCity = $(event.currentTarget).find('input').val();
-      queryWeather1(searchCity);
-      callbackStore1();
-      displayWeather1();
+      queryWeather1(searchCity, callbackStore1);
+      console.log(searchCity);
+      // callbackStore1();
+      // displayWeather1();
       // displayWeather2(clouds2, temp2, precip2);
 // This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
 //linked to the same class
@@ -54,9 +55,9 @@ $('#js-search1').submit(function(event){
 $('#js-search2').submit(function(event){
       event.preventDefault();
       var searchCity = $(event.currentTarget).find('input').val();
-      queryWeather2(searchCity);
-      callbackStore2();
-      displayWeather2();
+      queryWeather2(searchCity, callbackStore2);
+      // callbackStore2();
+      // displayWeather2();
       // displayWeather2(clouds2, temp2, precip2);
 // This may result in re-rendering Weather1 when we click Submit for Player2 weather because the two buttons are
 //linked to the same class
@@ -110,6 +111,7 @@ function displayResult(){
 
 
 function callbackStore1(response) {
+    console.log(response);
     if(response) {
       temp1 = response.main.temp;
       clouds1 = response.clouds.all
@@ -120,6 +122,7 @@ function callbackStore1(response) {
   }  else {
     precip1 = false;
   }
+   displayWeather1();
     }
 }
 
@@ -135,6 +138,7 @@ function callbackStore2(response) {
     precip2 = false;
   }
     }
+    displayWeather2();
 }
 
 
