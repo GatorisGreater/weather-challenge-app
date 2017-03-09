@@ -1,11 +1,10 @@
 Name:
-Better Weather
+Better Weather App
 
-API Documentation: (https://www.google.com "API Docs")
-Open Weather Map's Current Weather API
+API Documentation: (http://www.openweathermap.org/current) Open Weather Map's Current Weather API
 
 Screenshot:
-![alt text](https://github.com/gatorisgreater/portfolio/blob/master/assets/project-portfolio.PNG "Logo Title Text 1")
+![alt text](https://github.com/gatorisgreater/portfolio/blob/master/assets/weather-challenge-app.PNG "Logo Title Text 1")
 
 Requirements/Installation:
 
