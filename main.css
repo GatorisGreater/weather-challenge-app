@@ -3,7 +3,19 @@
 }
 
 html {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a3/Cumulus_clouds_panorama.jpg");
+    background-image: url("http://4.bp.blogspot.com/-zIrb2woDGJk/Tsv61grAvRI/AAAAAAAAI8g/Dm6vYaUi-kg/s1600/DSCF1921.JPG");
+    background-size: cover;
+    background-position: center center;
     text-align: center;
+    font-family: 'Cantarell', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: #000 0px 0px 15px;
+    -webkit-font-smoothing: antialiased;
 }
 
+.pattern{
+	background: rgba(200, 200, 200, .5);
+	border-radius: 25px;
+	background-size: 50%;
+}

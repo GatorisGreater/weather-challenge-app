@@ -3,11 +3,14 @@
 
 <head> 
     <title>Better Weather App</title>
+      <meta name="description" content="Welcome to the Better Weather Challenge" charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Cantarell:400i" rel="stylesheet">
       <link rel="stylesheet" href="main.css">
-      <link rel="stylesheet" type="text/css" href="float-grid.css" />
-      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="responsive.css" />
+
 </head>
 <body>
 
@@ -21,11 +24,10 @@
       </form>
 </header>
 
-<div class='row'>
-<!--   <form id='js-search1'> -->
-    <div class='col-6'>
+<div id="pattern" class="pattern">
+    <div class="col-group">
       <div class='player1'>
-        <h4 class="js-city-1">City #1</h4>
+        <h2 class="js-city-1">City #1</h2>
         <p>Cloud Cover</p>
         <p class='js-clouddata1'><br></p>
         <p>Temperature</p>
@@ -33,34 +35,25 @@
         <p>Condition</p>
         <p class='js-precipdata1'><br></p>
       </div>
-    </div>
-  <!-- </form> -->
-</div>
 
-
-<div class='row'>
-<!--   <form id='js-search2'> -->
-    <div class='col-6'>
       <div class='player2'>
-        <h4 class="js-city-2">City #2</h4>
+        <h2 class="js-city-2">City #2</h2>
         <p>Cloud Cover</p>
         <p class='js-clouddata2'><br></p>
         <p>Temperature</p>
         <p class='js-tempdata2'><br></p>
         <p>Condition</p>
         <p class='js-precipdata2'><br></p>
-
       </div>
     </div>
-  <!-- </form> -->
 </div>
 
 
 <form id="js-compare">
   <button type="submit">Where's the Better Weather?</button>
-  <h3></h3>
+  <h2></h2>
 </form>
-
+ 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>

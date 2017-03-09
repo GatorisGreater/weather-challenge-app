@@ -93,7 +93,7 @@ let city2;
           }
 
           function displayResult(){
-            $('#js-compare h3').html(gameresult);
+            $('#js-compare h2').html(gameresult);
           }
 
           function callbackStore1(response) {
