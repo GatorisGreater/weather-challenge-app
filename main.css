@@ -14,8 +14,3 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
-.pattern{
-	background: rgba(200, 200, 200, .5);
-	border-radius: 25px;
-	background-size: 50%;
-}
