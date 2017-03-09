@@ -16,26 +16,15 @@ let player2_score = 0;
 let city1;
 let city2;
 
-//callback
-
 // ajax logic
 
-          const queryWeather1 = (searchCity, callbackFn) => {
+          const queryWeather = (searchCity, callback) => {
             let params = {
               q: searchCity,
               units: "imperial",
               appid: API_KEY,
             };
-            $.getJSON(SEARCH_URL, params, callbackFn)
-          }
-
-          const queryWeather2 = (searchCity, callbackFn) => {
-            let params = {
-              q: searchCity,
-              units: "imperial",
-              appid: API_KEY,
-            };
-            $.getJSON(SEARCH_URL, params, callbackFn)
+            $.getJSON(SEARCH_URL, params, callback)
           }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,16 +51,12 @@ let city2;
 
 //event listening logic
 
-          $('#js-search1').submit(function(event){
+          $('#js-search').submit(function(event){
                 event.preventDefault();
-                let searchCity = $(event.currentTarget).find('input').val();
-                queryWeather1(searchCity, callbackStore1);
-            })
-
-          $('#js-search2').submit(function(event){
-                event.preventDefault();
-                let searchCity = $(event.currentTarget).find('input').val();
-                queryWeather2(searchCity, callbackStore2);
+                let searchCityOne = $(event.currentTarget).find('#js-search-1').val();
+                let searchCityTwo = $(event.currentTarget).find('#js-search-2').val();
+                queryWeather(searchCityOne, callbackStore1);
+                queryWeather(searchCityTwo, callbackStore2);
             })
 
           $('#js-compare').submit(function(event) {
@@ -84,20 +69,31 @@ let city2;
 //render functions
 //must render weather data for each player AND render winner based upon comparrison of scores
 
+          function renderWeather() {
+            $('.js-clouddata1').html(clouds1 + '%');
+            $('.js-tempdata1').html(temp1);
+            $('.js-precipdata1').html(precipPlayer1);
+            $('.js-clouddata2').html(clouds2 + '%');
+            $('.js-tempdata2').html(temp2);
+            $('.js-precipdata2').html(precipPlayer2);
+          }
+
           function displayWeather1() {
+            $('.js-city-1').html(city1);
             $('.js-clouddata1').html(clouds1 + '%');
             $('.js-tempdata1').html(temp1);
             $('.js-precipdata1').html(precipPlayer1);
           }
 
           function displayWeather2(){
-           $('.js-clouddata2').html(clouds2 + '%');
+            $('.js-city-2').html(city2);
+            $('.js-clouddata2').html(clouds2 + '%');
             $('.js-tempdata2').html(temp2);
             $('.js-precipdata2').html(precipPlayer2);
           }
 
           function displayResult(){
-            $('#js-compare p').html(gameresult);
+            $('#js-compare h3').html(gameresult);
           }
 
           function callbackStore1(response) {
@@ -149,12 +145,12 @@ function compare () {
   compareTemp();
   compareClouds();
   if (player1_score > player2_score) {
-  return `${city1} has better weather`;
+  return `${city1} !!`;
   }
   else if (player1_score === player2_score){
     return `${city1} or ${city2} ? No matter`;
   }
   else {
-    return `${city2} has better weather`;
+    return `${city2} !!`;
   }
 };

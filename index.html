@@ -13,50 +13,52 @@
 
 <header>
   <h1>Welcome to Better Weather</h1>
-  <h3>Challenge an opponent head to head to see who has better weather</h3>
+    <h3>Challenge an opponent head to head to see who has better weather</h3>
+      <form id="js-search">
+        <input type="text" placeholder="Newark,NJ" id="js-search-1" required/>
+        <input type="text" placeholder="Atlanta,GA" id="js-search-2" required/>
+        <button type="Submit">Get Weather</button>
+      </form>
 </header>
 
 <div class='row'>
-  <form id='js-search1'>
+<!--   <form id='js-search1'> -->
     <div class='col-6'>
       <div class='player1'>
-        <p>    Cloud Cover  </p>
+        <h4 class="js-city-1">City #1</h4>
+        <p>Cloud Cover</p>
         <p class='js-clouddata1'><br></p>
-        <p>    Temperature  </p>
+        <p>Temperature</p>
         <p class='js-tempdata1'><br></p>
-        <p>    Condition  </p>
+        <p>Condition</p>
         <p class='js-precipdata1'><br></p>
-        <p>  City #1 </p>
-          <input type="text" placeholder="Newark,NJ"/>
-          <button type="Submit">Get Weather</button>
       </div>
     </div>
-  </form>
+  <!-- </form> -->
 </div>
 
 
 <div class='row'>
-  <form id='js-search2'>
+<!--   <form id='js-search2'> -->
     <div class='col-6'>
       <div class='player2'>
-        <p>      Cloud Cover   </p>
+        <h4 class="js-city-2">City #2</h4>
+        <p>Cloud Cover</p>
         <p class='js-clouddata2'><br></p>
-        <p>      Temperature    </p>
+        <p>Temperature</p>
         <p class='js-tempdata2'><br></p>
-        <p>      Condition   </p>
+        <p>Condition</p>
         <p class='js-precipdata2'><br></p>
-        <p>  City#2 </p>
-          <input type="text" placeholder="Atlanta,GA"/>
-          <button type="Submit">Get Weather</button>
+
       </div>
     </div>
-  </form>
+  <!-- </form> -->
 </div>
 
 
 <form id="js-compare">
-  <button type="submit">Who Wins?</button>
-  <p></p>
+  <button type="submit">Where's the Better Weather?</button>
+  <h3></h3>
 </form>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>

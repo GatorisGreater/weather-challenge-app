@@ -2,16 +2,8 @@
   box-sizing: border-box;
 }
 
-.row {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 html {
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a3/Cumulus_clouds_panorama.jpg");
     text-align: center;
 }
 
-#js-search1, #js-search2 {
-    margin-left: 50px;
-}
