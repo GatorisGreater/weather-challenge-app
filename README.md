@@ -7,7 +7,7 @@
 ![Better Weather Screenshot](https://github.com/gatorisgreater/portfolio/blob/master/assets/weather-challenge-app.PNG "Better Weather Screenshot")
 
 ### UX
-Use this app to see if you or a friend has the better weather today. Input cities 1 and 2 to get basic current weather information about each city. Select the "Better Weather" button to use this information to determine who has the better weather. The prevailing city is displayed, ties are considered.
+Use this app to see if you or a friend has the better weather today. Input cities 1 and 2 to get basic weather information about each city. Select the "Better Weather" button to determine who has the better weather based on that information. The prevailing city is displayed, ties are considered.
 
 ### Tech Stack
 
@@ -20,6 +20,6 @@ Use this app to see if you or a friend has the better weather today. Input citie
 ### Requirements/Installation
 Runs in the browser
 
-## The Better Weather App is designed for the entertainment of a general audience. 
+## The Better Weather App is designed for the entertainment. 
 
 
