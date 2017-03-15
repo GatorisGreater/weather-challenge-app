@@ -20,6 +20,6 @@ Use this app to see if you or a friend has the better weather today. Input citie
 ### Requirements/Installation
 Runs in the browser
 
-## The Better Weather App is designed for the entertainment. 
+## The Better Weather App is designed for entertainment. 
 
 
